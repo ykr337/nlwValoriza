@@ -1,3 +1,4 @@
+import { hash } from "bcryptjs";
 import { getCustomRepository } from "typeorm";
 import { UserRepository } from "../repositories/UserRepository";
 
@@ -5,10 +6,11 @@ interface UserInput {
   name: string;
   email: string;
   admin?: boolean;
+  password: string;
 }
 
 class UserService {
-  async execute({ name, email, admin }: UserInput) {
+  async execute({ name, email, admin = false, password }: UserInput) {
     const userRepository = getCustomRepository(UserRepository);
     let user = null;
     if (!email) {
@@ -19,11 +21,13 @@ class UserService {
     const userExists = await userRepository.findOne({ email });
 
     if (!userExists) {
-      console.log(userExists);
+      const hashPassword = await hash(password, 8);
+
       user = userRepository.create({
         name,
         email,
         admin,
+        password: hashPassword,
       });
     } else {
       throw new Error("Usuario já cadastrado");
