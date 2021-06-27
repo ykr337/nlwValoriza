@@ -35,6 +35,11 @@ class UserService {
     await userRepository.save(user);
     return user;
   }
+
+  async listUsers() {
+    const userRepository = getCustomRepository(UserRepository);
+    return await userRepository.find();
+  }
 }
 
 export { UserService };

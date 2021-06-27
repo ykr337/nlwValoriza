@@ -11,6 +11,14 @@ class UserController {
 
     return res.status(201).json(user);
   }
+
+  async listUsers(req: Request, res: Response) {
+    const userService = new UserService();
+
+    const users = await userService.listUsers();
+
+    return res.status(201).json(users);
+  }
 }
 
 export { UserController };

@@ -8,6 +8,12 @@ class TagController {
     const tag = await service.execute(name);
     return response.json(tag);
   }
+
+  async listTags(request: Request, response: Response) {
+    const service = new TagService();
+    const tags = await service.listTags();
+    return response.json(tags);
+  }
 }
 
 export { TagController };
