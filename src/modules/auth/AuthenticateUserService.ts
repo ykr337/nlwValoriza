@@ -2,7 +2,7 @@ import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import { getCustomRepository, getRepository } from "typeorm";
 import { Subject } from "typeorm/persistence/Subject";
-import { UserRepository } from "../repositories/UserRepository";
+import { UserRepository } from "../user/UserRepository";
 
 interface AuthInput {
   email: string;

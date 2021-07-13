@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { TagService } from "../service/TagService";
+import { TagService } from "./TagService";
 
 class TagController {
   async handle(request: Request, response: Response) {

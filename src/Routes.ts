@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { AuthenticateUserController } from "./controllers/AuthenticateUserController";
-import { ComplimentController } from "./controllers/ComplimentController";
-import { TagController } from "./controllers/TagController";
-import { UserController } from "./controllers/UserController";
-import { ensureAdmin } from "./middleware/EnsureAdmin";
-import { ensureAuthenticated } from "./middleware/EnsureAuthenticated";
+import { AuthenticateUserController } from "./modules/auth/AuthenticateUserController";
+import { ComplimentController } from "./modules/compliment/ComplimentController";
+import { ensureAdmin } from "./modules/utils/middleware/EnsureAdmin";
+import { ensureAuthenticated } from "./modules/utils/middleware/EnsureAuthenticated";
+import { TagController } from "./modules/tag/TagController";
+import { UserController } from "./modules/user/UserController";
 
 const router = Router();
 
