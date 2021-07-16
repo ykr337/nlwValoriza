@@ -22,8 +22,12 @@
     "typeorm": "^0.2.34",
     "uuid": "^8.3.2"
   },
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "dev": "ts-node-dev src/server.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
+    "start":"ts-node-dev src/server.ts"
   }
 }
