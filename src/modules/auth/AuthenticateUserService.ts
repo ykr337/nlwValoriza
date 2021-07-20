@@ -14,7 +14,12 @@ class AuthenticateUserService {
     const userRepository = getCustomRepository(UserRepository);
 
     const user = await userRepository.findOne({ email });
-    const passwordMatch = await compare(password, user.password);
+
+    if (!user) {
+      throw new Error("Email/Password incorrect");
+    }
+
+    const passwordMatch = await compare(password, user?.password);
 
     if (!user || !passwordMatch) {
       throw new Error("Email/Password incorrect");

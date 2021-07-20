@@ -18,21 +18,25 @@ class ComplimentController {
   }
 
   async handleListComplimentsByUser(req: Request, res: Response) {
+    console.log("deu ruim");
     const user_id = req.user_id;
     const complimentService = new ComplimentsService();
 
     const compliments = await complimentService.listComplimentsByUser(user_id);
 
-    return response.json(compliments);
+    return res.json(compliments);
   }
 
   async handleListComplimentsFromUser(req: Request, res: Response) {
+    console.log("deu ruim");
     const user_id = req.user_id;
     const complimentService = new ComplimentsService();
 
-    const compliments = await complimentService.listComplimentsByUser(user_id);
-
-    return response.json(compliments);
+    const compliments = await complimentService.listComplimentsFromUser(
+      user_id
+    );
+    console.log(compliments);
+    return res.json(compliments);
   }
 }
 

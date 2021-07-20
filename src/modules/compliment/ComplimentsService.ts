@@ -35,6 +35,10 @@ class ComplimentsService {
       user_receiver,
       message,
     });
+
+    complimentsRepository.save(compliment);
+
+    return compliment;
   }
 
   async listComplimentsByUser(user_id: string) {
@@ -46,17 +50,17 @@ class ComplimentsService {
       },
     });
 
+    console.log(compliments);
+
     return compliments;
   }
 
   async listComplimentsFromUser(user_id: string) {
     const complimentsRepositories = getCustomRepository(ComplimentsRepository);
-
     const compliments = await complimentsRepositories.find({
       where: {
         user_sender: user_id,
       },
-      relations: ["userSender", "userReceiver", "tag"],
     });
 
     return compliments;
